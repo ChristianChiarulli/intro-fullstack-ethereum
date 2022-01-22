@@ -52,41 +52,35 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className='wrapper'>
       <nav className='navbar'>
         <div className='container'>
-          <div className='logo'>SimpleStorage</div>
-          <ul className='nav'>
-            <li>
-              <a href='#'>Connect</a>
-            </li>
-          </ul>
+          <div className='logo'>Simple Storage</div>
+          <button>Connect</button>
         </div>
       </nav>
       <section className='cards'>
-        <div className='card-container'>
-          <div className='card'>
-            <h2>Set Value</h2>
-            <form className='storage-form'>
-              <label>
-                <input type='text' name='value' className='form-input' />
-              </label>
-            </form>
-            <button className='btn'>Submit</button>
-          </div>
-          <div className='card'>
-            <h2>Get Value</h2>
-            <button className='btn'>Retrieve</button>
-            <label className='lbl'>0</label>
-          </div>
+        <div className='card'>
+          <h2>Set Value</h2>
+          <form>
+            <label>
+              <input type='text' name='value' />
+            </label>
+          </form>
+          <button>Submit</button>
+        </div>
+        <div className='card'>
+          <h2>Get Value</h2>
+          <button>Retrieve</button>
+          <label>0</label>
         </div>
       </section>
-      {/* <div className="navbar">navbar</div> */}
-      {/* <div className="logo">Logo</div> */}
-      {/* <div className="nav">nav</div> */}
-      {/* <div className="content">content</div> */}
-      {/* <div className="footer">footer</div> */}
-    </>
+      <footer>
+        <div className='container'>
+          {"200 gwei | 7906980"}
+        </div>
+      </footer>
+    </div>
   )
 }
 

@@ -11,6 +11,8 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   background: linear-gradient(to bottom, #1d003b, #1e1e1e, #1e1e1e);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   height: 100vh;
   width: 100vw;
 }
@@ -21,11 +23,13 @@ img {
 
 h1,
 h2 {
-  margin-bottom: 0.95rem;
+  margin-bottom: 1rem;
 }
 
-ul {
-  list-style-type: none;
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .container {
@@ -35,7 +39,6 @@ ul {
 }
 
 .navbar {
-  /* background: #3474e6; */
   color: #fff;
   height: 3.75rem;
 }
@@ -45,11 +48,21 @@ ul {
   font-weight: bold;
 }
 
-.navbar a {
-  color: #fff;
-  text-decoration: none;
+.navbar button {
+  background: #E90270;
+  color: white;
   font-size: 1.1rem;
   font-weight: bold;
+  border: 1px solid black;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+}
+
+.navbar button:hover,
+.navbar button:active {
+  background: #d00057;
+  color: #fdfdfd;
 }
 
 .navbar .container {
@@ -59,19 +72,9 @@ ul {
   height: 100%;
 }
 
-.navbar ul {
+.cards {
   display: flex;
-}
-
-.navbar ul li {
-  margin-left: 1.25rem;
-}
-
-.navbar a:hover {
-  color: lightblue;
-}
-
-.card-container {
+  flex-direction: column;
   max-width: 25rem;
   margin: 4rem auto;
   padding: 0 2rem;
@@ -91,7 +94,7 @@ ul {
   padding: 1rem 1.25rem;
 }
 
-.btn {
+.card button {
   background: #2073e5;
   color: white;
   font: inherit;
@@ -104,18 +107,18 @@ ul {
   margin-bottom: 1rem;
 }
 
-.btn:hover,
-.btn:active {
+.card button:hover,
+.card button:active {
   background: #0e61d3;
   color: #fdfdfd;
 }
 
-.storage-form {
+.card form {
   width: 100%;
   margin-bottom: 1rem;
 }
 
-.lbl {
+.card label {
   background: #282c34;
   width: 100%;
   border-radius: 0.8rem;
@@ -126,7 +129,7 @@ ul {
   margin-bottom: 1rem;
 }
 
-.form-input {
+.card input {
   background: #282c34;
   border: hidden;
   width: 100%;
@@ -135,4 +138,18 @@ ul {
   padding: 0.3rem 0.5rem;
   color: #f1f1f1;
   padding: 0.3rem 0.5rem;
+}
+
+footer {
+  margin-top: auto;
+  justify-content: end;
+  padding-bottom: .07rem;
+  font-size: 0.7rem;
+  color: #d4d4d4;
+}
+
+footer .container {
+  display: flex;
+  justify-content: end;
+  padding-bottom: 0.7rem;
 }
