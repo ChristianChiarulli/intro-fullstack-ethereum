@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import './App.css'
 // import SimpleStorage from './artifacts/contracts/SimpleStorage.sol/SimpleStorage.json'
 
-const simpleStorageAddress = '0xb107a9552ee8ca6551f6bcda154ef4560da226d2'
+const simpleStorageAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
 // const simpleStorageAbi = SimpleStorage.abi
 
 const App = () => {
@@ -34,16 +34,59 @@ const App = () => {
     //   provider
     // )
     // console.log(await simpleStorageContract.get())
+    {
+      /* <header className='navbar'> */
+    }
+    {
+      /* <button onClick={getBlockNumber}>Get Block Number</button> */
+    }
+    {
+      /* <button onClick={getBalance}>Get Balance</button> */
+    }
+    {
+      /* <button onClick={getStoredData}>Get Stored Data</button> */
+    }
+    {
+      /* </header> */
+    }
   }
 
   return (
-    <div className='App'>
-      <header className='App-header'>
-        <button onClick={getBlockNumber}>Get Block Number</button>
-        <button onClick={getBalance}>Get Balance</button>
-        <button onClick={getStoredData}>Get Stored Data</button>
-      </header>
-    </div>
+    <>
+      <nav className='navbar'>
+        <div className='container'>
+          <div className='logo'>SimpleStorage</div>
+          <ul className='nav'>
+            <li>
+              <a href='#'>Connect</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+      <section className='cards'>
+        <div className='card-container'>
+          <div className='card'>
+            <h2>Set Value</h2>
+            <form className='storage-form'>
+              <label>
+                <input type='text' name='value' className='form-input' />
+              </label>
+            </form>
+            <button className='btn'>Submit</button>
+          </div>
+          <div className='card'>
+            <h2>Get Value</h2>
+            <button className='btn'>Retrieve</button>
+            <label className='lbl'>0</label>
+          </div>
+        </div>
+      </section>
+      {/* <div className="navbar">navbar</div> */}
+      {/* <div className="logo">Logo</div> */}
+      {/* <div className="nav">nav</div> */}
+      {/* <div className="content">content</div> */}
+      {/* <div className="footer">footer</div> */}
+    </>
   )
 }
 

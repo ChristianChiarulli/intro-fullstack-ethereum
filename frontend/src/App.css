@@ -1,38 +1,138 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1rem;
+  line-height: 1.5;
+  background: linear-gradient(to bottom, #1d003b, #1e1e1e, #1e1e1e);
+  height: 100vh;
+  width: 100vw;
+}
+
+img {
+  max-width: 100%;
+}
+
+h1,
+h2 {
+  margin-bottom: 0.95rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+.container {
+  max-width: 69rem;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.navbar {
+  /* background: #3474e6; */
+  color: #fff;
+  height: 3.75rem;
+}
+
+.navbar .logo {
+  font-size: x-large;
+  font-weight: bold;
+}
+
+.navbar a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+}
+
+.navbar .container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar ul {
+  display: flex;
+}
+
+.navbar ul li {
+  margin-left: 1.25rem;
+}
+
+.navbar a:hover {
+  color: lightblue;
+}
+
+.card-container {
+  max-width: 25rem;
+  margin: 4rem auto;
+  padding: 0 2rem;
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.card {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background: #202428;
+  color: #fff;
+  border-radius: 0.625rem;
+  margin: 1.25rem 0.625rem;
+  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
+  padding: 1rem 1.25rem;
+}
+
+.btn {
+  background: #2073e5;
   color: white;
+  font: inherit;
+  border: 1px solid black;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  /* margin: 1rem; */
+  width: 100%;
+  margin-bottom: 1rem;
 }
 
-.App-link {
-  color: #61dafb;
+.btn:hover,
+.btn:active {
+  background: #0e61d3;
+  color: #fdfdfd;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.storage-form {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.lbl {
+  background: #282c34;
+  width: 100%;
+  border-radius: 0.8rem;
+  font-size: 1.3rem;
+  color: #f1f1f1;
+  padding: 0.2rem;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.form-input {
+  background: #282c34;
+  border: hidden;
+  width: 100%;
+  border-radius: 0.8rem;
+  font-size: 1.3rem;
+  padding: 0.3rem 0.5rem;
+  color: #f1f1f1;
+  padding: 0.3rem 0.5rem;
 }
