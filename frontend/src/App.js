@@ -10,7 +10,7 @@ const App = () => {
   const [provider, setProvider] = useState()
 
   // For the form
-  const [inputValue, setInputValue] = useState()
+  const [inputValue, setInputValue] = useState('')
 
   useEffect(() => {
     if (typeof window.ethereum !== 'undefined') {
@@ -54,16 +54,12 @@ const App = () => {
     }
   }
 
-  const handleSubmit = (event) => {
-    event.preventDefault()
-  } 
-
-  const handleInputChange = (event) => {
-
+  const handleSubmit = (e) => {
+    e.preventDefault() // stops page from refreshing
   }
 
   return (
-    <div className='wrapper'>
+    <div className='layout'>
       <header className='navbar'>
         <div className='container'>
           <div className='logo'>Simple Storage</div>
@@ -72,20 +68,23 @@ const App = () => {
       </header>
       <section className='cards'>
         <div className='card'>
-
-
           <h2>Set Value</h2>
           <form onSubmit={handleSubmit}>
-            <label>
-              <input type='text' placeholder="0" name='value' onChange={handleInputChange} />
-            </label>
+            <input
+              type='text'
+              required
+              value={inputValue}
+              onChange={(e) => setInputValue(e.target.value)}
+              onKeyPress={(event) => {
+                if (!/[0-9]/.test(event.key)) {
+                  event.preventDefault()
+                }
+              }}
+              name='value'
+              placeholder='0'
+            />
           </form>
           <button>Submit</button>
-
-        <p>input is: {inputValue} </p>
-
-
-
         </div>
         <div className='card'>
           <h2>Get Value</h2>
@@ -94,9 +93,7 @@ const App = () => {
         </div>
       </section>
       <footer>
-        <div className='container'>
-          {"200 gwei | 7906980"}
-        </div>
+        <div className='container'>{'200 gwei | 7906980'}</div>
       </footer>
     </div>
   )
