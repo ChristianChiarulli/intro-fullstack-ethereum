@@ -117,10 +117,6 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.card form:hover {
-  /* cursor: pointer; */
-}
-
 .card label {
   background: #282c34;
   width: 100%;
