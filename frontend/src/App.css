@@ -26,7 +26,7 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.wrapper {
+.layout {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -59,7 +59,6 @@ h2 {
   cursor: pointer;
 }
 
-.navbar button:hover,
 .navbar button:active {
   background: #d00057;
   color: #fdfdfd;
@@ -107,7 +106,7 @@ h2 {
   margin-bottom: 1rem;
 }
 
-.card button:hover {
+.card button:active {
   background: #0e61d3;
   color: #fdfdfd;
 }
@@ -115,6 +114,11 @@ h2 {
 .card form {
   width: 100%;
   margin-bottom: 1rem;
+}
+
+.card input:hover,
+.card input:focus {
+  outline: 2px solid #383c44;
 }
 
 .card label {
@@ -134,9 +138,8 @@ h2 {
   width: 100%;
   border-radius: 0.8rem;
   font-size: 1.3rem;
-  padding: 0.3rem 0.5rem;
   color: #f1f1f1;
-  padding: 0.3rem 0.5rem;
+  padding: 0.4rem 0.5rem;
 }
 
 footer {
