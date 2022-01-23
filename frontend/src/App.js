@@ -53,12 +53,12 @@ const App = () => {
 
   return (
     <div className='wrapper'>
-      <nav className='navbar'>
+      <header className='navbar'>
         <div className='container'>
           <div className='logo'>Simple Storage</div>
           <button>Connect</button>
         </div>
-      </nav>
+      </header>
       <section className='cards'>
         <div className='card'>
           <h2>Set Value</h2>
