@@ -9,6 +9,9 @@ const simpleStorageAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
 const App = () => {
   const [provider, setProvider] = useState()
 
+  // For the form
+  const [inputValue, setInputValue] = useState()
+
   useEffect(() => {
     if (typeof window.ethereum !== 'undefined') {
       console.log('ethereum is available')
@@ -51,6 +54,14 @@ const App = () => {
     }
   }
 
+  const handleSubmit = (event) => {
+    event.preventDefault()
+  } 
+
+  const handleInputChange = (event) => {
+
+  }
+
   return (
     <div className='wrapper'>
       <header className='navbar'>
@@ -61,13 +72,20 @@ const App = () => {
       </header>
       <section className='cards'>
         <div className='card'>
+
+
           <h2>Set Value</h2>
-          <form>
+          <form onSubmit={handleSubmit}>
             <label>
-              <input type='text' name='value' />
+              <input type='text' placeholder="0" name='value' onChange={handleInputChange} />
             </label>
           </form>
           <button>Submit</button>
+
+        <p>input is: {inputValue} </p>
+
+
+
         </div>
         <div className='card'>
           <h2>Get Value</h2>
