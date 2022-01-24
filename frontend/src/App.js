@@ -13,14 +13,19 @@ const App = () => {
   const [inputValue, setInputValue] = useState('')
   const [value, setValue] = useState('0')
   const [blockNumber, setBlockNumber] = useState('0')
+  const [gasPrice, setGasPrice] = useState('0')
 
   useEffect(async () => {
     if (typeof window.ethereum !== 'undefined') {
       console.log('ethereum is available')
-      const testProvider = new ethers.providers.Web3Provider(window.ethereum)
-      setProvider(testProvider)
-      setBlockNumber(await testProvider.getBlockNumber())
+      const provider = new ethers.providers.Web3Provider(window.ethereum)
+      setProvider(provider)
+      setBlockNumber(await provider.getBlockNumber())
+      let gasPrice = await provider.getGasPrice() 
+      gasPrice = Math.trunc(ethers.utils.formatUnits(gasPrice, "gwei"))
+      setGasPrice(gasPrice)
       // console.log(SimpleStorage.abi)
+      console.log(await provider.getGasPrice())
     }
   }, [])
 
@@ -76,12 +81,11 @@ const App = () => {
         <div className='card'>
           <h2>Get Value</h2>
           <button onClick={handlRetrieveData}>Retrieve</button>
-          <button onClick={getBlockNumber}>Test</button>
           <label>{value}</label>
         </div>
       </section>
       <footer>
-        <div className='container'>200 gwei &bull; ${blockNumber}</div>
+        <div className='container'>{gasPrice} gwei &bull; {blockNumber}</div>
       </footer>
     </div>
   )
