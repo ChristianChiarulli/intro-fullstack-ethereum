@@ -80,7 +80,15 @@ const App = () => {
         <div className='container'>
           <div className='logo'>Simple Storage</div>
           {connected ? (
-            <label className='account'>{account}</label>
+            <div>
+              <label className='balance'>
+                {`${Number.parseFloat(balance).toPrecision(4)} ETH `}
+              </label>
+              <label className='account'>
+                {account.substring(0, 6)}...
+                {account.substring(account.length - 4)}
+              </label>
+            </div>
           ) : (
             <button onClick={connectHandler}>Connect</button>
           )}

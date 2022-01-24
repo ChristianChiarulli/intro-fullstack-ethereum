@@ -64,6 +64,14 @@ h2 {
   color: #fdfdfd;
 }
 
+.navbar .balance {
+  background: #202428;
+  color: white;
+  border: 1px solid black;
+  padding: 0.3rem 0.5rem;
+  border-radius: 0.8rem;
+}
+
 .navbar .account {
   background: #202428;
   color: white;
