@@ -11,24 +11,18 @@ const App = () => {
 
   // For the form
   const [inputValue, setInputValue] = useState('')
+  const [value, setValue] = useState('0')
+  const [blockNumber, setBlockNumber] = useState('0')
 
-  useEffect(() => {
+  useEffect(async () => {
     if (typeof window.ethereum !== 'undefined') {
       console.log('ethereum is available')
-      setProvider(new ethers.providers.Web3Provider(window.ethereum))
+      const testProvider = new ethers.providers.Web3Provider(window.ethereum)
+      setProvider(testProvider)
+      setBlockNumber(await testProvider.getBlockNumber())
       // console.log(SimpleStorage.abi)
     }
   }, [])
-
-  const getBlockNumber = async () => {
-    console.log(await provider.getBlockNumber())
-  }
-
-  const getBalance = async () => {
-    console.log(
-      await provider.getBalance('0xf39fd6e51aad88f6f4ce6ab8827279cfffb92266')
-    )
-  }
 
   const getStoredData = async () => {
     // const simpleStorageContract = new ethers.Contract(
@@ -36,26 +30,19 @@ const App = () => {
     //   simpleStorageAbi,
     //   provider
     // )
-    // console.log(await simpleStorageContract.get())
-    {
-      /* <header className='navbar'> */
-    }
-    {
-      /* <button onClick={getBlockNumber}>Get Block Number</button> */
-    }
-    {
-      /* <button onClick={getBalance}>Get Balance</button> */
-    }
-    {
-      /* <button onClick={getStoredData}>Get Stored Data</button> */
-    }
-    {
-      /* </header> */
-    }
+  }
+
+  const getBlockNumber = async () => {
+    console.log(await provider.getBlockNumber())
   }
 
   const handleSubmit = (e) => {
     e.preventDefault() // stops page from refreshing
+    console.log(inputValue)
+  }
+
+  const handlRetrieveData = () => {
+    setValue(inputValue)
   }
 
   return (
@@ -75,25 +62,26 @@ const App = () => {
               required
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={(event) => {
-                if (!/[0-9]/.test(event.key)) {
-                  event.preventDefault()
+              onKeyPress={(e) => {
+                if (!/[0-9]/.test(e.key)) {
+                  e.preventDefault()
                 }
               }}
               name='value'
               placeholder='0'
             />
+            <button>Submit</button>
           </form>
-          <button>Submit</button>
         </div>
         <div className='card'>
           <h2>Get Value</h2>
-          <button>Retrieve</button>
-          <label>0</label>
+          <button onClick={handlRetrieveData}>Retrieve</button>
+          <button onClick={getBlockNumber}>Test</button>
+          <label>{value}</label>
         </div>
       </section>
       <footer>
-        <div className='container'>{'200 gwei | 7906980'}</div>
+        <div className='container'>200 gwei &bull; ${blockNumber}</div>
       </footer>
     </div>
   )
