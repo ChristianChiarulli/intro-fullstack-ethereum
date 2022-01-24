@@ -40,7 +40,7 @@ h2 {
 
 .navbar {
   color: #fff;
-  height: 3.75rem;
+  height: 4rem;
 }
 
 .navbar .logo {
@@ -66,9 +66,10 @@ h2 {
 
 .navbar label {
   background: #202428;
+  font-size: 1.1rem;
   color: white;
   border: 1px solid black;
-  padding: 0.3rem 0.5rem;
+  padding: 0.5rem 0.7rem;
   border-radius: 0.8rem;
   margin: 0.2rem;
 }
@@ -96,16 +97,17 @@ h2 {
   align-items: center;
   background: #202428;
   color: #fff;
-  border-radius: 0.625rem;
-  margin: 1.25rem 0.625rem;
+  border-radius: 0.8rem;
+  margin: 1.25rem 0.7rem;
   box-shadow: 0 3px 5px rgba(0, 0, 0, 0.6);
-  padding: 1rem 1.25rem;
+  padding: 1.2rem 2rem;
 }
 
 .card button {
   background: #2073e5;
   color: white;
   font: inherit;
+  font-size: 1.2rem;
   border: 1px solid black;
   padding: 0.3rem 0.5rem;
   border-radius: 0.8rem;
