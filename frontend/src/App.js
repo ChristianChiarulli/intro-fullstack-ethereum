@@ -3,12 +3,11 @@ import { ethers } from 'ethers'
 import './App.css'
 // import SimpleStorage from './artifacts/contracts/SimpleStorage.sol/SimpleStorage.json'
 
-const simpleStorageAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
+// const simpleStorageAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
 // const simpleStorageAbi = SimpleStorage.abi
 
 const App = () => {
   const [provider, setProvider] = useState()
-
   const [inputValue, setInputValue] = useState('')
   const [value, setValue] = useState('0')
   const [blockNumber, setBlockNumber] = useState('0')
@@ -61,10 +60,6 @@ const App = () => {
       })
   }
 
-  const getBlockNumber = async () => {
-    console.log(await provider.getBlockNumber())
-  }
-
   const handleSubmit = (e) => {
     e.preventDefault() // stops page from refreshing
     console.log(inputValue)
@@ -82,7 +77,7 @@ const App = () => {
           {connected ? (
             <div>
               <label className='balance'>
-                {`${Number.parseFloat(balance).toPrecision(4)} ETH `}
+                {`${Number.parseFloat(balance).toPrecision(4)} ETH`}
               </label>
               <label className='account'>
                 {account.substring(0, 6)}...
