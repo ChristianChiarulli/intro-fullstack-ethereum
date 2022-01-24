@@ -9,32 +9,56 @@ const simpleStorageAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
 const App = () => {
   const [provider, setProvider] = useState()
 
-  // For the form
   const [inputValue, setInputValue] = useState('')
   const [value, setValue] = useState('0')
   const [blockNumber, setBlockNumber] = useState('0')
   const [gasPrice, setGasPrice] = useState('0')
+  const [account, setAccount] = useState('')
+  const [balance, setBalance] = useState('')
+  const [connected, setConnected] = useState(false)
 
+  // Will run once everytime a user connects to the dapp
   useEffect(async () => {
     if (typeof window.ethereum !== 'undefined') {
       console.log('ethereum is available')
       const provider = new ethers.providers.Web3Provider(window.ethereum)
       setProvider(provider)
       setBlockNumber(await provider.getBlockNumber())
-      let gasPrice = await provider.getGasPrice() 
-      gasPrice = Math.trunc(ethers.utils.formatUnits(gasPrice, "gwei"))
+      let gasPrice = await provider.getGasPrice()
+      gasPrice = Math.trunc(ethers.utils.formatUnits(gasPrice, 'gwei'))
       setGasPrice(gasPrice)
       // console.log(SimpleStorage.abi)
       console.log(await provider.getGasPrice())
     }
   }, [])
 
-  const getStoredData = async () => {
-    // const simpleStorageContract = new ethers.Contract(
-    //   simpleStorageAddress,
-    //   simpleStorageAbi,
-    //   provider
-    // )
+  const accountHandler = (account) => {
+    setAccount(account)
+    getAccountBalance(account.toString())
+  }
+
+  const getAccountBalance = (account) => {
+    window.ethereum
+      .request({ method: 'eth_getBalance', params: [account, 'latest'] })
+      .then((balance) => {
+        setBalance(ethers.utils.formatEther(balance))
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
+  }
+
+  const connectHandler = () => {
+    window.ethereum
+      .request({ method: 'eth_requestAccounts' })
+      .then((result) => {
+        accountHandler(result[0])
+        getAccountBalance(result[0])
+        setConnected(true)
+      })
+      .catch((err) => {
+        console.log(err.message)
+      })
   }
 
   const getBlockNumber = async () => {
@@ -55,7 +79,11 @@ const App = () => {
       <header className='navbar'>
         <div className='container'>
           <div className='logo'>Simple Storage</div>
-          <button>Connect</button>
+          {connected ? (
+            <label className='account'>{account}</label>
+          ) : (
+            <button onClick={connectHandler}>Connect</button>
+          )}
         </div>
       </header>
       <section className='cards'>
@@ -67,11 +95,7 @@ const App = () => {
               required
               value={inputValue}
               onChange={(e) => setInputValue(e.target.value)}
-              onKeyPress={(e) => {
-                if (!/[0-9]/.test(e.key)) {
-                  e.preventDefault()
-                }
-              }}
+              onKeyPress={(e) => !/[0-9]/.test(e.key) && e.preventDefault()}
               name='value'
               placeholder='0'
             />
@@ -85,7 +109,9 @@ const App = () => {
         </div>
       </section>
       <footer>
-        <div className='container'>{gasPrice} gwei &bull; {blockNumber}</div>
+        <div className='container'>
+          {gasPrice} gwei &bull; {blockNumber}
+        </div>
       </footer>
     </div>
   )
