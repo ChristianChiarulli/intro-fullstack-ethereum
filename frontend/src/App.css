@@ -70,6 +70,7 @@ h2 {
   border: 1px solid black;
   padding: 0.3rem 0.5rem;
   border-radius: 0.8rem;
+  margin: 0.2rem;
 }
 
 .navbar .account {
@@ -78,6 +79,7 @@ h2 {
   border: 1px solid black;
   padding: 0.3rem 0.5rem;
   border-radius: 0.8rem;
+  margin: 0.2rem;
 }
 
 .navbar .container {
