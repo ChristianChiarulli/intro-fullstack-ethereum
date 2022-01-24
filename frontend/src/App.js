@@ -76,10 +76,10 @@ const App = () => {
           <div className='logo'>Simple Storage</div>
           {connected ? (
             <div>
-              <label className='balance'>
+              <label>
                 {`${Number.parseFloat(balance).toPrecision(4)} ETH`}
               </label>
-              <label className='account'>
+              <label>
                 {account.substring(0, 6)}...
                 {account.substring(account.length - 4)}
               </label>
