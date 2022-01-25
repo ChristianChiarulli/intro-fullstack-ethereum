@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
 import './App.css'
-// import SimpleStorage from './artifacts/contracts/SimpleStorage.sol/SimpleStorage.json'
+import SimpleStorage from './artifacts/contracts/SimpleStorage.sol/SimpleStorage.json'
 
-// const simpleStorageAddress = '0x5FbDB2315678afecb367f032d93F642f64180aa3'
-// const simpleStorageAbi = SimpleStorage.abi
+const simpleStorageAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+const simpleStorageAbi = SimpleStorage.abi
 
 const App = () => {
   const [provider, setProvider] = useState()
@@ -17,17 +17,18 @@ const App = () => {
   const [connected, setConnected] = useState(false)
 
   // Will run once everytime a user connects to the dapp
-  useEffect(async () => {
+  useEffect(() => {
     if (typeof window.ethereum !== 'undefined') {
       console.log('ethereum is available')
       const provider = new ethers.providers.Web3Provider(window.ethereum)
+      const setBlockchainStuff = async () => {
+        setBlockNumber(await provider.getBlockNumber())
+        let gasPrice = await provider.getGasPrice()
+        gasPrice = Math.trunc(ethers.utils.formatUnits(gasPrice, 'gwei'))
+        setGasPrice(gasPrice)
+      }
+      setBlockchainStuff()
       setProvider(provider)
-      setBlockNumber(await provider.getBlockNumber())
-      let gasPrice = await provider.getGasPrice()
-      gasPrice = Math.trunc(ethers.utils.formatUnits(gasPrice, 'gwei'))
-      setGasPrice(gasPrice)
-      // console.log(SimpleStorage.abi)
-      console.log(await provider.getGasPrice())
     }
   }, [])
 
@@ -35,6 +36,8 @@ const App = () => {
     setAccount(account)
     getAccountBalance(account.toString())
   }
+
+  // TODO: change accounts
 
   const getAccountBalance = (account) => {
     window.ethereum
@@ -60,13 +63,26 @@ const App = () => {
       })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault() // stops page from refreshing
+    const contract = new ethers.Contract(
+      simpleStorageAddress,
+      simpleStorageAbi,
+      provider
+    )
+    const signer = provider.getSigner()
+    const contractWithSigner = contract.connect(signer)
+    console.log(await contractWithSigner.set(inputValue))
     console.log(inputValue)
   }
 
-  const handlRetrieveData = () => {
-    setValue(inputValue)
+  const handlRetrieveData = async () => {
+    const simpleStorageContract = new ethers.Contract(
+      simpleStorageAddress,
+      simpleStorageAbi,
+      provider
+    )
+    setValue(ethers.utils.formatUnits(await simpleStorageContract.get(), 0))
   }
 
   return (

@@ -335,16 +335,35 @@ module.exports = {
 
 Now whenever we run `hh compile` the `ABI` is placed in `./frontend/src/artifacts`
 
+## Metamask Hardhat Local Blockchain Fix
 
-## Interacting with the blockchain (using ethers.js)
+Before we can use metamask with our local blockchain we also need to add the following to `hardhat.config.js`:
+
+```
+module.exports = {
+  solidity: '0.8.4',
+  paths: {
+    artifacts: './frontend/src/artifacts',
+  },
+  networks: {
+    hardhat: {
+      chainId: 1337,
+    },
+  },
+}
+```
+
+TODO: Link to issue: 
+
+## Interacting with the Blockchain (using ethers.js)
 
 Ok so now that we've created our smart contract, tested it, deployed it, and obtained the ABI, we are now ready to interact with our contract and create our dapp.
 
-To begin remove all of the code in `src/App.js` and replace it with the following:
+To begin remove all of the code in `src/App.js` and replace it with the code found at the following link: [App.js](https://github.com/ChristianChiarulli/intro-fullstack-ethereum/blob/master/frontend/src/App.js) 
 
-```
-```
+### Connect Metamask to Local Blockchain
 
+Open up your Metamask extension, click on the top where it says `mainnet` and choose `Localhost 8545`. 
 
 ## Styling
 
