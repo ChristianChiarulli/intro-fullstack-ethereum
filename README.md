@@ -369,4 +369,50 @@ Open up your Metamask extension, click on the top where it says `mainnet` and ch
 
 ## Testnet deployment (Optional)
 
+In order to deploy your contract to a testnet you will need to edit the `hardhat.config.js` to include networks other than `localhost`. 
 
+You will also need to set up an account with a node provider (you could do this without one but it will be much more complicated) for this tutorial I set one up at [alchemy.io](https://www.alchemy.com/) 
+
+Here is an example of adding the `Ropsten` testnet to our list of networks:
+
+```
+require('@nomiclabs/hardhat-waffle')
+
+// Replace this with a URL generated after setting up and account 
+// with a node provider e.g. alchemy.io
+const ROPSTEN_URL = ''
+
+// Replace this private key with your Ropsten account private key
+// To export your private key from Metamask, open Metamask and
+// go to Account Details > Export Private Key
+// Be aware of NEVER putting real Ether into testing accounts
+const ROPSTEN_PRIVATE_KEY = ''
+
+module.exports = {
+  solidity: '0.8.4',
+  paths: {
+    artifacts: './frontend/src/artifacts',
+  },
+  networks: {
+    hardhat: {
+      chainId: 1337,
+    },
+    ropsten: {
+      url: `${ROPSTEN_URL}`,
+      accounts: [`${ROPSTEN_PRIVATE_KEY}`],
+    },
+  },
+}
+```
+
+After adding the new entry you will need to deploy your contract using the same deployment script and command as before
+
+```
+npx hardhat run --network ropsten scripts/deploy.js
+```
+
+After running this command copy the address for your deployed contract and head over to [ropsten.etherscan.io](https://ropsten.etherscan.io/) and click on the `Contract` tab and `Verify and Publish` your contract. For this tutorial you can select TODO: fill this in after anther deployment
+
+TODO: get test ether
+
+TODO: update contract address in `App.js`
