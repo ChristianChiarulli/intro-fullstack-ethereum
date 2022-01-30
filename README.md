@@ -306,6 +306,8 @@ In the terminal where you started your local node you should have noticed the fo
 
 We will be using [React](https://reactjs.org/) since it is by far the most popular framework used to create frontends for dapps. 
 
+If you need to brush up on your React skills I recommend checking out this tutorial: [React Tutorial](https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d) 
+
 Make sure you are in the root of our project (in the `intro-fullstack-ethereum` directory) and run:
 
 ```
@@ -353,7 +355,7 @@ module.exports = {
 }
 ```
 
-TODO: Link to issue: 
+[Metamask chainId issue](https://hardhat.org/metamask-issue.html) 
 
 ## Interacting with the Blockchain (using ethers.js)
 
@@ -365,7 +367,24 @@ To begin remove all of the code in `src/App.js` and replace it with the code fou
 
 Open up your Metamask extension, click on the top where it says `mainnet` and choose `Localhost 8545`. 
 
+I also recommend importing one of the accounts into Metamask so that you have 10,000 ether to play with. You can import by private key in metamask so just grab one of the private keys from the terminal where you started your node.
+
+### Interact with the Dapp
+
+You should now be able to interact with the dapp. Try getting the value and observe that it is the same value passed to the deploy function in out deploy script. After clicking the connect button you will be able to spend some ether and update the value in the smart contract.
+
+**NOTE:** Remember changing values on chain cost ether, reading values from the blockchain is free.
+
 ## Styling
+
+If you want to be a **fullstack** blockchain developer then you cannot escape learning `css` and how to create a solid UI/UX for your users, or investors. There are solutions like [bootstrap](https://getbootstrap.com/) available, but I would recommend at least knowing the basics including `flexbox`, `css-grid` and how to make your site responsive.
+
+Here are some good resources to learn `css`
+
+- [Flexbox](https://www.youtube.com/watch?v=3YW65K6LcIA) 
+- [CSS Grid](https://www.youtube.com/watch?v=moBhzSC455o) 
+- [Build a Responsive Website](https://www.youtube.com/watch?v=p0bGHP-PXD4) 
+- [Complete Guide](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9654188?start=15#content) 
 
 ## Testnet deployment (Optional)
 
