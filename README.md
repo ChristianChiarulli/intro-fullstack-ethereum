@@ -7,18 +7,18 @@ This article will help you escape writing solidity tutorials in Remix and explai
 - [Solidity](https://docs.soliditylang.org) (To write our smart contract)
 - [Hardat](https://hardhat.org/) (build, test and deployment framework)
 - [React](https://reactjs.org/) (Create our frontend)
-- [Metamask](https://metamask.io/) (Web Wallet that will allow us to interact with the ethereum blockchain) 
+- [Metamask](https://metamask.io/) (Web Wallet that will allow us to interact with the ethereum blockchain)
 - [Ethers](https://docs.ethers.io) (web3 library for interacting with the blockchain and our smart contract)
 
 ## Installing a web wallet
 
-Before getting started make sure you have a web wallet installed, I recommend [Metamask](https://metamask.io/download/). It is essentially just a browser extension that will allow us to interact with the ethereum blockchain. Just follow the instructions provided in the link to install and make sure not to use the same seed phrase for development for real ethereum/money. 
+Before getting started make sure you have a web wallet installed, I recommend [Metamask](https://metamask.io/download/). It is essentially just a browser extension that will allow us to interact with the ethereum blockchain. Just follow the instructions provided in the link to install and make sure not to use the same seed phrase for development for real ethereum/money.
 
 ## Environment
 
 First head over to the hardhat [website](https://hardhat.org/), we're going to be doing most of what is covered in the tutorial section as well as some of the documentation.
 
-Make sure you have nodejs installed, if you don't then follow the setup [here](https://hardhat.org/tutorial/setting-up-the-environment.html) 
+Make sure you have nodejs installed, if you don't then follow the setup [here](https://hardhat.org/tutorial/setting-up-the-environment.html)
 
 ## Create a new project
 
@@ -157,7 +157,6 @@ You will always be able to call the `deploy` method on your contract even if you
 
 We have defined two tests here one just deploys the contract with an initial value and checks that it was deployed properly, the other does the same except we set a new value using the `set` method defined in our smart contract.
 
-
 Before we can run our test we will need to `require` `hardhat-waffle` this will make the `ethers` variable available in global scope
 
 So add the following line to the top of your `hardhat.config.js` file:
@@ -181,7 +180,8 @@ $ hh test # or npx hardhat test
 
 You will notice the text that we added to the test is printed out when the test runs
 
-**NOTE** Another good example test: [link](https://hardhat.org/tutorial/testing-contracts.html) 
+**NOTE** Another good example test: [link](https://hardhat.org/tutorial/testing-contracts.html)
+
 ### console.log in solidity
 
 When running contracts inside of the hardhat network we can make use of a special logging function provided by hardhat, here is an example of how to add it to your contract:
@@ -265,7 +265,6 @@ main()
   });
 ```
 
-
 ### Local deployment
 
 - Start a local node
@@ -304,9 +303,9 @@ In the terminal where you started your local node you should have noticed the fo
 
 ## Creating our frontend
 
-We will be using [React](https://reactjs.org/) since it is by far the most popular framework used to create frontends for dapps. 
+We will be using [React](https://reactjs.org/) since it is by far the most popular framework used to create frontends for dapps.
 
-If you need to brush up on your React skills I recommend checking out this tutorial: [React Tutorial](https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d) 
+If you need to brush up on your React skills I recommend checking out this tutorial: [React Tutorial](https://www.youtube.com/watch?v=j942wKiXFu8&list=PL4cUxeGkcC9gZD-Tvwfod2gaISzfRiP9d)
 
 Make sure you are in the root of our project (in the `intro-fullstack-ethereum` directory) and run:
 
@@ -314,7 +313,7 @@ Make sure you are in the root of our project (in the `intro-fullstack-ethereum` 
 npx create-react-app frontend
 ```
 
-and make sure you can start your frontend by entering the `frontend` directory and running:
+Make sure you can start your frontend by entering the `frontend` directory and running:
 
 ```
 npm start
@@ -355,17 +354,17 @@ module.exports = {
 }
 ```
 
-[Metamask chainId issue](https://hardhat.org/metamask-issue.html) 
+[Metamask chainId issue](https://hardhat.org/metamask-issue.html)
 
 ## Interacting with the Blockchain (using ethers.js)
 
 Ok so now that we've created our smart contract, tested it, deployed it, and obtained the ABI, we are now ready to interact with our contract and create our dapp.
 
-To begin remove all of the code in `src/App.js` and replace it with the code found at the following link: [App.js](https://github.com/ChristianChiarulli/intro-fullstack-ethereum/blob/master/frontend/src/App.js) 
+To begin remove all of the code in `src/App.js` and replace it with the code found at the following link: [App.js](https://github.com/ChristianChiarulli/intro-fullstack-ethereum/blob/master/frontend/src/App.js)
 
 ### Connect Metamask to Local Blockchain
 
-Open up your Metamask extension, click on the top where it says `mainnet` and choose `Localhost 8545`. 
+Open up your Metamask extension, click on the top where it says `mainnet` and choose `Localhost 8545`.
 
 I also recommend importing one of the accounts into Metamask so that you have 10,000 ether to play with. You can import by private key in metamask so just grab one of the private keys from the terminal where you started your node.
 
@@ -381,31 +380,35 @@ If you want to be a **fullstack** blockchain developer then you cannot escape le
 
 Here are some good resources to learn `css`
 
-- [Flexbox](https://www.youtube.com/watch?v=3YW65K6LcIA) 
-- [CSS Grid](https://www.youtube.com/watch?v=moBhzSC455o) 
-- [Build a Responsive Website](https://www.youtube.com/watch?v=p0bGHP-PXD4) 
-- [Complete Guide](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9654188?start=15#content) 
+- [Flexbox](https://www.youtube.com/watch?v=3YW65K6LcIA)
+- [CSS Grid](https://www.youtube.com/watch?v=moBhzSC455o)
+- [Build a Responsive Website](https://www.youtube.com/watch?v=p0bGHP-PXD4)
+- [Complete Guide](https://www.udemy.com/course/css-the-complete-guide-incl-flexbox-grid-sass/learn/lecture/9654188?start=15#content)
+
+Remove all of the code in `src/App.css` and replace it with the code found at the following link: [App.css](https://github.com/ChristianChiarulli/intro-fullstack-ethereum/blob/master/frontend/src/App.css)
+
+A basic understanding of `css` and `flexbox` is all you will need to understand the code found at that link. For frontend styling idea/inspiration I recommend heading over to a site like [coingecko](https://www.coingecko.com/), and click on a token you're interested, for most of them you should see a site associated with the token where you can checkout their dapp for instance here is a link to [uniswap](https://app.uniswap.org/#/swap)
 
 ## Testnet deployment (Optional)
 
-In order to deploy your contract to a testnet you will need to edit the `hardhat.config.js` to include networks other than `localhost`. 
+In order to deploy your contract to a testnet you will need to edit the `hardhat.config.js` to include networks other than `localhost`.
 
-You will also need to set up an account with a node provider (you could do this without one but it will be much more complicated) for this tutorial I set one up at [alchemy.io](https://www.alchemy.com/) 
+You will also need to set up an account with a node provider (you could do this without one but it will be much more complicated) for this tutorial I set one up at [alchemy.io](https://www.alchemy.com/)
 
-Here is an example of adding the `Ropsten` testnet to our list of networks:
+Here is an example of adding the `Rinkeby` testnet to our list of networks:
 
 ```
 require('@nomiclabs/hardhat-waffle')
 
-// Replace this with a URL generated after setting up and account 
+// Replace this with a URL generated after setting up and account
 // with a node provider e.g. alchemy.io
-const ROPSTEN_URL = ''
+const RINKEBY_URL = ''
 
-// Replace this private key with your Ropsten account private key
+// Replace this private key with your Rinkeby account private key
 // To export your private key from Metamask, open Metamask and
 // go to Account Details > Export Private Key
 // Be aware of NEVER putting real Ether into testing accounts
-const ROPSTEN_PRIVATE_KEY = ''
+const RINKEBY_PRIVATE_KEY = ''
 
 module.exports = {
   solidity: '0.8.4',
@@ -416,9 +419,9 @@ module.exports = {
     hardhat: {
       chainId: 1337,
     },
-    ropsten: {
-      url: `${ROPSTEN_URL}`,
-      accounts: [`${ROPSTEN_PRIVATE_KEY}`],
+    rinkeby: {
+      url: `${RINKEBY_URL}`,
+      accounts: [`${RINKEBY_PRIVATE_KEY}`],
     },
   },
 }
@@ -427,11 +430,15 @@ module.exports = {
 After adding the new entry you will need to deploy your contract using the same deployment script and command as before
 
 ```
-npx hardhat run --network ropsten scripts/deploy.js
+npx hardhat run --network rinkeby scripts/deploy.js
 ```
 
-After running this command copy the address for your deployed contract and head over to [ropsten.etherscan.io](https://ropsten.etherscan.io/) and click on the `Contract` tab and `Verify and Publish` your contract. For this tutorial you can select TODO: fill this in after anther deployment
+After running this command copy the address for your deployed contract and head over to [rinkeby.etherscan.io](https://rinkeby.etherscan.io/) and click on the `Contract` tab and `Verify and Publish` your contract. For this tutorial you can select `Solidity (Single file)` for `Compile Type`, `0.8.4` for the `Compiler Version` and `MIT` for `License Type`
 
-TODO: get test ether
+### Get Test Ether
+
+Make sure to 
+
+[Rinkeby Faucet](https://faucets.chain.link/rinkeby) 
 
 TODO: update contract address in `App.js`
