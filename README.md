@@ -80,7 +80,10 @@ contract SimpleStorage {
 }
 ```
 
-TODO: explain contract
+This contract is very simple. When the contract is deployed it is instantiated with a value called `storedData`, after deploying the contract you have the ability to `get` the data or `set` the data.
+
+
+### Compiling our contract
 
 We can now use `hardhat` to compile our contract with
 
@@ -435,10 +438,18 @@ npx hardhat run --network rinkeby scripts/deploy.js
 
 After running this command copy the address for your deployed contract and head over to [rinkeby.etherscan.io](https://rinkeby.etherscan.io/) and click on the `Contract` tab and `Verify and Publish` your contract. For this tutorial you can select `Solidity (Single file)` for `Compile Type`, `0.8.4` for the `Compiler Version` and `MIT` for `License Type`
 
+You will also need to update the contract address in `App.js`, example:
+
+```
+const simpleStorageAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+```
+
 ### Get Test Ether
 
-Make sure to 
+Make sure you're connected to the Rinkeby Network in Metamask before you get started. After that all you will need to do is paste your public address into the form, solve a captcha and get your ether.
 
 [Rinkeby Faucet](https://faucets.chain.link/rinkeby) 
 
-TODO: update contract address in `App.js`
+### Interact with Contract Deployed on Testnet
+
+You should now be able to interact with the contract deployed to the rinkeby testnet in the same way you did with the local deployment.
