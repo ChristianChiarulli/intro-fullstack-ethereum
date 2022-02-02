@@ -37,8 +37,6 @@ const App = () => {
     getAccountBalance(account.toString())
   }
 
-  // TODO: change accounts
-
   const getAccountBalance = (account) => {
     window.ethereum
       .request({ method: 'eth_getBalance', params: [account, 'latest'] })
@@ -54,6 +52,7 @@ const App = () => {
     window.ethereum
       .request({ method: 'eth_requestAccounts' })
       .then((result) => {
+        console.log(result)
         accountHandler(result[0])
         getAccountBalance(result[0])
         setConnected(true)
@@ -95,13 +94,13 @@ const App = () => {
               <label>
                 {`${Number.parseFloat(balance).toPrecision(4)} ETH`}
               </label>
-              <label>
+              <button className="account-button" onClick={connectHandler}>
                 {account.substring(0, 6)}...
                 {account.substring(account.length - 4)}
-              </label>
+              </button>
             </div>
           ) : (
-            <button onClick={connectHandler}>Connect</button>
+            <button className="connect-button" onClick={connectHandler}>Connect</button>
           )}
         </div>
       </header>

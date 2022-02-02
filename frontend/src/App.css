@@ -48,7 +48,7 @@ h2 {
   font-weight: bold;
 }
 
-.navbar button {
+.connect-button {
   background: #e90270;
   color: white;
   font-size: 1.1rem;
@@ -59,7 +59,7 @@ h2 {
   cursor: pointer;
 }
 
-.navbar button:active {
+.connect-button:active {
   background: #d00057;
   color: #fdfdfd;
 }
@@ -72,6 +72,23 @@ h2 {
   padding: 0.5rem 0.7rem;
   border-radius: 0.8rem;
   margin: 0.2rem;
+}
+
+.account-button {
+  background: #202428;
+  font-size: 1.1rem;
+  font: inherit;
+  color: white;
+  border: 1px solid black;
+  padding: 0.5rem 0.7rem;
+  border-radius: 0.8rem;
+  margin: 0.2rem;
+  cursor: pointer;
+}
+
+.account-button:active {
+  background: #303438;
+  color: #fdfdfd;
 }
 
 .navbar .container {
