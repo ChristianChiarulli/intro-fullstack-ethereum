@@ -396,22 +396,38 @@ A basic understanding of `css` and `flexbox` is all you will need to understand 
 
 In order to deploy your contract to a testnet you will need to edit the `hardhat.config.js` to include networks other than `localhost`.
 
-You will also need to set up an account with a node provider (you could do this without one but it will be much more complicated) for this tutorial I set one up at [alchemy.io](https://www.alchemy.com/)
+You will need to set up an account with a node provider (you could do this without one but it will be much more complicated) for this tutorial I set one up at [alchemy.io](https://www.alchemy.com/)
+
+We'll also need to install another package called `dotenv` so we can get secrets like the *private key* and *node url* from environment variables, that way you don't need to worry about committing them to source control.
+
+```
+cd frontend
+
+npm i dotenv
+```
+
+For the environment variable: `RINKEBY_PRIVATE_KEY` replace it with your Rinkeby account private key. To export your private key from Metamask, open Metamask and go to **Account Details** > **Export Private Key**.
+
+***WARNING:*** Don't use the private associated with an account you keep any real ether in!
+
+For the environment variable: `RINKEBY_URL` replace it with the *http* key after setting up a rinkeby app in alchemy.
+
+```
+export RINKEBY_URL=
+export RINKEBY_PRIVATE_KEY=
+```
 
 Here is an example of adding the `Rinkeby` testnet to our list of networks:
 
 ```
 require('@nomiclabs/hardhat-waffle')
+require("dotenv").config();
 
 // Replace this with a URL generated after setting up and account
 // with a node provider e.g. alchemy.io
-const RINKEBY_URL = ''
+const RINKEBY_URL = process.env.RINKEBY_URL
 
-// Replace this private key with your Rinkeby account private key
-// To export your private key from Metamask, open Metamask and
-// go to Account Details > Export Private Key
-// Be aware of NEVER putting real Ether into testing accounts
-const RINKEBY_PRIVATE_KEY = ''
+const RINKEBY_PRIVATE_KEY = process.env.RINKEBY_PRIVATE_KEY
 
 module.exports = {
   solidity: '0.8.4',
@@ -441,7 +457,7 @@ After running this command copy the address for your deployed contract and head 
 You will also need to update the contract address in `App.js`, example:
 
 ```
-const simpleStorageAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+const simpleStorageAddress = '0xde4De608C284709E8980212C7A48B8bcA5b570A2'
 ```
 
 ### Get Test Ether
@@ -453,3 +469,5 @@ Make sure you're connected to the Rinkeby Network in Metamask before you get sta
 ### Interact with Contract Deployed on Testnet
 
 You should now be able to interact with the contract deployed to the rinkeby testnet in the same way you did with the local deployment.
+
+### Deploy to Netlify
