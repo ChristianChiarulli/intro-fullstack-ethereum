@@ -3,9 +3,10 @@
  */
 
 require('@nomiclabs/hardhat-waffle')
+require("dotenv").config();
 
-const RINKEBY_URL = 'https://eth-rinkeby.alchemyapi.io/v2/D-MLvdPiuZ_xbBAGCJuUjVcHGQjiU9xR'
-const RINKEBY_PRIVATE_KEY = '2b657be932e7677dee92835d7ec6d9c4d699c10c24a8fa77267dbd157f37d95c'
+const RINKEBY_URL = 'process.env.RINKEBY_URL'
+const RINKEBY_PRIVATE_KEY = 'process.env.RINKEBY_PRIVATE_KEY'
 
 module.exports = {
   solidity: '0.8.4',
