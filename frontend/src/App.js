@@ -3,7 +3,7 @@ import { ethers } from 'ethers'
 import './App.css'
 import SimpleStorage from './artifacts/contracts/SimpleStorage.sol/SimpleStorage.json'
 
-const simpleStorageAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+const simpleStorageAddress = '0xde4De608C284709E8980212C7A48B8bcA5b570A2'
 const simpleStorageAbi = SimpleStorage.abi
 
 const App = () => {
