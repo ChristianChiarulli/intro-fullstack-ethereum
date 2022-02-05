@@ -53,13 +53,15 @@ const App = () => {
     setAccount(account)
     const balance = await provider.getBalance(account)
     // notice that we use format ether here, uncomment the following console.log and see what happens if we don't
-    // console.log(balance)
     setBalance(ethers.utils.formatEther(balance))
   }
 
   // handles connecting account
   const connectHandler = async () => {
+    // MetaMask requires requesting permission to connect users accounts
+    await provider.send("eth_requestAccounts", []);
     const accountList = await provider.listAccounts()
+    console.log(accountList)
     accountHandler(accountList[0])
     setConnected(true)
   }
