@@ -34,6 +34,8 @@ const App = () => {
       const setBlockchainData = async () => {
         setBlockNumber(await provider.getBlockNumber())
         let gasPrice = await provider.getGasPrice()
+        // formats a returned big number as gwei where 1,000,000,000 gwei is 1 ether
+        // you can read about more denominations here: https://ethdocs.org/en/latest/ether.html
         gasPrice = Math.trunc(ethers.utils.formatUnits(gasPrice, 'gwei'))
         setGasPrice(gasPrice)
       }
