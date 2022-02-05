@@ -46,20 +46,15 @@ const App = () => {
   }, [])
 
   // handles setting our account
-  const accountHandler = (account) => {
+  const accountHandler = async (account) => {
     setAccount(account)
-    getAccountBalance(account.toString())
-  }
-
-  const getAccountBalance = async (account) => {
-    const balance = await provider.getBalance(account)
+    const balance = await provider.getBalance(account.toString())
     setBalance(ethers.utils.formatEther(balance))
   }
 
   const connectHandler = async () => {
     const accountList = await provider.listAccounts()
     accountHandler(accountList[0])
-    getAccountBalance(accountList[0])
     setConnected(true)
   }
 
