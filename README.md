@@ -365,7 +365,7 @@ Ok so now that we've created our smart contract, tested it, deployed it, and obt
 
 To begin remove all of the code in `src/App.js` and replace it with the code found at the following link: [App.js](https://github.com/ChristianChiarulli/intro-fullstack-ethereum/blob/master/frontend/src/App.js)
 
-Instead of explaining all of the code here, the file is heavily commented and should explain exactly what is going on.
+Instead of explaining all of the code here, the file is heavily commented and should explain everything you need to know.
 
 Also get the deployed contract address from earlier and set in `App.js`:
 
