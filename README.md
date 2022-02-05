@@ -480,3 +480,25 @@ Make sure you're connected to the Rinkeby Network in Metamask before you get sta
 You should now be able to interact with the contract deployed to the rinkeby testnet in the same way you did with the local deployment.
 
 ### Deploy to Netlify
+
+Finally we can deploy our dapp to a hosting site like Netlify.
+
+To get started head over to [netlify.com](https://www.netlify.com/) and create an account.
+
+You will also need to install `netlify-cli` via `npm`
+
+```
+npm i -g netlify-cli
+```
+
+Now we can build our application and deploy.
+
+```
+cd frontend/
+
+npm run build
+
+netlify deploy
+```
+
+Follow the command line prompts and choose yes for a new project and `./build` as your deploy folder.
