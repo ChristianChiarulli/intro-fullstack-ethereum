@@ -365,6 +365,12 @@ Ok so now that we've created our smart contract, tested it, deployed it, and obt
 
 To begin remove all of the code in `src/App.js` and replace it with the code found at the following link: [App.js](https://github.com/ChristianChiarulli/intro-fullstack-ethereum/blob/master/frontend/src/App.js)
 
+Also get the deployed contract address from earlier and set in `App.js`:
+
+```
+const simpleStorageAddress = '0x5fbdb2315678afecb367f032d93f642f64180aa3'
+```
+
 ### Connect Metamask to Local Blockchain
 
 Open up your Metamask extension, click on the top where it says `mainnet` and choose `Localhost 8545`.
@@ -413,8 +419,9 @@ For the environment variable: `RINKEBY_PRIVATE_KEY` replace it with your Rinkeby
 For the environment variable: `RINKEBY_URL` replace it with the *http* key after setting up a rinkeby app in alchemy.
 
 ```
-export RINKEBY_URL=
-export RINKEBY_PRIVATE_KEY=
+# Replace with your values
+export RINKEBY_URL=https://eth-rinkeby.alchemyapi.io/v2/XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+export RINKEBY_PRIVATE_KEY=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 ```
 
 Here is an example of adding the `Rinkeby` testnet to our list of networks:
