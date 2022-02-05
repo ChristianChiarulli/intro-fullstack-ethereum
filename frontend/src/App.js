@@ -3,8 +3,12 @@ import { ethers } from 'ethers'
 import './App.css'
 import SimpleStorage from './artifacts/contracts/SimpleStorage.sol/SimpleStorage.json'
 
+// NOTE: Make sure to change this to the contract address you deployed
 const simpleStorageAddress = '0xde4De608C284709E8980212C7A48B8bcA5b570A2'
+// ABI so the web3 library knows how to interact with our contract
 const simpleStorageAbi = SimpleStorage.abi
+
+// NOTE: checkout the API for ethers.js here: https://docs.ethers.io/v5/api/
 
 const App = () => {
   const [provider, setProvider] = useState()
@@ -18,48 +22,45 @@ const App = () => {
 
   // Will run once everytime a user connects to the dapp
   useEffect(() => {
+    // check if ethereum is provided by something like Metamask
     if (typeof window.ethereum !== 'undefined') {
       console.log('ethereum is available')
+
+      // get provider injected by metamask
       const provider = new ethers.providers.Web3Provider(window.ethereum)
-      const setBlockchainStuff = async () => {
+
+      // Set some data like block number and gas price provided
+      const setBlockchainData = async () => {
         setBlockNumber(await provider.getBlockNumber())
         let gasPrice = await provider.getGasPrice()
         gasPrice = Math.trunc(ethers.utils.formatUnits(gasPrice, 'gwei'))
         setGasPrice(gasPrice)
       }
-      setBlockchainStuff()
+
+      // Set aquired blockchain data as state to use in our frontend
+      setBlockchainData()
+
+      // Set provider so we can use it in other functions
       setProvider(provider)
     }
   }, [])
 
+  // handles setting our account
   const accountHandler = (account) => {
     setAccount(account)
     getAccountBalance(account.toString())
   }
 
-  const getAccountBalance = (account) => {
-    window.ethereum
-      .request({ method: 'eth_getBalance', params: [account, 'latest'] })
-      .then((balance) => {
-        setBalance(ethers.utils.formatEther(balance))
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
+  const getAccountBalance = async (account) => {
+    const balance = await provider.getBalance(account)
+    setBalance(ethers.utils.formatEther(balance))
   }
 
-  const connectHandler = () => {
-    window.ethereum
-      .request({ method: 'eth_requestAccounts' })
-      .then((result) => {
-        console.log(result)
-        accountHandler(result[0])
-        getAccountBalance(result[0])
-        setConnected(true)
-      })
-      .catch((err) => {
-        console.log(err.message)
-      })
+  const connectHandler = async () => {
+    const accountList = await provider.listAccounts()
+    accountHandler(accountList[0])
+    getAccountBalance(accountList[0])
+    setConnected(true)
   }
 
   const handleSubmit = async (e) => {
@@ -94,13 +95,15 @@ const App = () => {
               <label>
                 {`${Number.parseFloat(balance).toPrecision(4)} ETH`}
               </label>
-              <button className="account-button" onClick={connectHandler}>
+              <button className='account-button' onClick={connectHandler}>
                 {account.substring(0, 6)}...
                 {account.substring(account.length - 4)}
               </button>
             </div>
           ) : (
-            <button className="connect-button" onClick={connectHandler}>Connect</button>
+            <button className='connect-button' onClick={connectHandler}>
+              Connect
+            </button>
           )}
         </div>
       </header>
