@@ -124,7 +124,7 @@ It is also important to note that hardhat comes with it's own network so when we
 First create a directory called `test/` and create a file called `simple-storage-test.js`
 
 ```
-mkdir `test`
+mkdir test
 touch simple-storage-test.js
 ```
 
