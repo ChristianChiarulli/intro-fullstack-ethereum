@@ -4,6 +4,8 @@ Check out deployed dapp [here!](https://fullstack-ethereum.netlify.app/) (Make s
 
 This article will help you escape writing solidity tutorials in Remix and explain the tools you will need to create a simple full-stack dapp. The smart contract will be very simple itself and that is because we're focusing on all of the other tools you will need.
 
+[Discord Link for help](https://discord.gg/9cNxMQq8t8) 
+
 ## Our stack
 
 - [Solidity](https://docs.soliditylang.org) (To write our smart contract)
