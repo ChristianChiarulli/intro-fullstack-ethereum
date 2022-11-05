@@ -46,7 +46,7 @@ A menu will appear, for this tutorial we will be selecting `Create an empty hard
 Make sure these packages are installed, you may have been asked to install them when initializing the project.
 
 ```
-npm install --save-dev @nomiclabs/hardhat-ethers ethers @nomiclabs/hardhat-waffle ethereum-waffle chai
+npm install --save-dev @nomicfoundation/hardhat-toolbox
 ```
 
 ## Create our Contract
@@ -169,7 +169,7 @@ Before we can run our test we will need to `require` `hardhat-waffle` this will 
 So add the following line to the top of your `hardhat.config.js` file:
 
 ```
-require("@nomiclabs/hardhat-waffle");
+require("@nomicfoundation/hardhat-toolbox");
 ```
 
 Ok now we are ready to run our test:
